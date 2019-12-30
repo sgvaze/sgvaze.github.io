@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Lightweight U-Nets - Sagar Vaze</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<div class="inner">
+						<h1><strong><a href="../index.html">Home</a></strong></h1>
+					</div>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container">
+					<header>
+						<h1>Lightweight U-Nets</h1>
+					</header>
+					<div class="row">
+						<div class="col-12">
+
+							<!-- Text -->
+								<section class="box">
+									<h3 align="center">
+										Low-Memory CNNs Enabling Real-Time Ultrasound Segmentation Towards Mobile Deployment
+									</h3>
+									<p align="center">
+									<a href="../index.html">Sagar Vaze</a>,
+									<a href="https://weidixie.github.io/weidi-personal-webpage/">Weidi Xie</a>,
+									<a href="http://users.ox.ac.uk/~some2959/people.html">Ana Namburete</a>
+									</p>
+
+									<h3 align="center">
+									<a href="https://github.com/sgvaze/lightweight_unet">Paper</a>
+										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									<a href="https://github.com/sgvaze/lightweight_unet">Code</a>
+									</h3>
+									<!--
+									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									<-->
+									<hr />
+
+									We propose methods to build CNNs capable of running at 30 frames per second on a CPU and of having small memory footprints, facilitating
+									deployment on mobile devices. Our work is catered towards ultrasound imaging, whose high frame rates require fast image analysis,
+									and whose portable nature benefits form analysis algorithms capable of running on mobile devices.
+
+									<hr />
+
+									<h3>Context</h3>
+									<span class="image right"><img src="../images/rural_ultrasound.jpg" alt="" /></span>
+									<p>
+									Ultrasound imaging is still widely used around the world despite the presence of higher resolution modalities such as MRI and CT. It
+									is often favoured due to its low cost, portable nature and high frame rates, with the market now containing a number of hand-held
+									probes capable of imaging in real-time for a few hundred dollars.
+
+									<br />
+									<br />
+
+									For these reasons, ultrasound is used in the imaging of moving fetuses and is useful more generally in the developing world (particularly in low-income,
+									rural areas). Therefore, image analysis techniques which can operate efficiently on a mobile device have high utility. However, the state-of-the-art
+									medical image analysis algorithms, namely convolutional neural networks (CNNs), come with high computational costs. CNNs typically require millions of
+									parameters to define, the storage of which requires significant memory and hinders deployment on mobiles. In addition, each CNN parameter necessitates a
+									number of multiplications and additions during the model's computation, resulting in lengthy run-times.
+
+									<br />
+									<br />
+
+									The problem we tackle in this work is that of efficient neural networks for application to ultrasound imaging, with the ultimate goal being the development
+									of imaging algorithms which are capable of running in real-time on a mobile device, to deliver automated ultrasound analysis at point-of-care, alongside the imaging
+									itself.
+
+
+									</p>
+									<hr />
+
+									<h3>Technical Contributions</h3>
+									<span class="image fit"><img src="../images/thumbs/lightweight_unets.png" alt="" /></span>
+									<p>
+
+									We tackle the image analysis task of semantic segmentation, for which the CNN architectures used typically have the largest number of
+									parameters and require the longest inference times. For instance, <a href="https://arxiv.org/abs/1505.04597">the U-Net</a>, the most commonly
+									applied segmentation network in the medical imaging literature, requires 130 million parameters to define, taking nearly half a gigabyte in memory.
+
+									<br />
+									<br />
+
+									We propose two simple architectural changes to solve this problem. Firstly, we propose drastic thinning of medical imaging CNNs: to significantly
+									reduce the number of filters per network layer. We show that the U-Net can be dramatically reduced in width and still have sufficient
+									capacity to model the variability in a popular ultrasound challenge dataset.
+
+									<br />
+									<br />
+
+									Secondly, we suggest the integration of <a href="https://eli.thegreenplace.net/2018/depthwise-separable-convolutions-for-machine-learning/">
+									separable convolutions</a> into the architecture. Separable convolutions offer a more efficient way of parameterising rank deficient convolution
+									kernels, reducing the number of parameters needed to define each convolutional layer in the network.
+
+									<br />
+									<br />
+
+									Finally, we propose a novel knowledge distillation technique to boost the performance of the separable convolution models to that of their regular
+									convolution counterparts, for use in accuracy critical settings. We suggest the incorporation of an additional loss during training, encouraging the
+									separable convolution model to recreate the intermediate feature maps of its regular convolution 'teacher'.
+
+									</p>
+
+									<hr />
+
+									<h3>Outcome</h3>
+
+									<span class="image left">
+											<video controls width="200">
+
+												<source src="../images/Mobile App Demo.mp4"
+													type="video/webm">
+
+											Sorry, your browser doesn't support embedded videos.
+											</video>
+									</span>
+
+									<p>
+									The results in our paper show that our final distilled model has an accuracy statistically equivalent to that of the original U-net while running
+									9 times faster, and taking 420 times less space in memory. The model runs at 30 frames per second on a CPU, which is real-time in the context of
+									ultrasound. It is especially important that real-time inference is demonstrated on CPUs - most CNN inference times are shown on GPUs, which are
+									expensive and typically an order of magnitude faster at neural network computation.
+
+									<br />
+									<br />
+
+									Finally, we implement our lightweight models on mobile devices, as demonstrated in the video on the left. The video shows a model trained
+									to segment adipose tissue from fetal ultrasound, operating on a Google Pixel 2.
+									</p>
+								</section>
+
+						</div>
+					</div>
+				</section>
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="icons">
+							<li><a href="https://uk.linkedin.com/in/sagar-vaze-2356ab171" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/sgvaze" class="icon brands fa-github"><span class="label">Github</span></a></li>
+							<li><a href="https://twitter.com/Sagar_Vaze" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="mailto: remove-this-if-youre-human-sagar@robots.ox.ac.uk" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
