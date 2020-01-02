@@ -2134,7 +2134,10 @@ input, select, textarea {
 			}
 
 		.image.avatar {
+
+			width: 8em;
 			border-radius: 200%;
+			margin: 0 7.2em 1em 0;
 		}
 
 			.image.avatar:before {
@@ -2144,7 +2147,37 @@ input, select, textarea {
 			.image.avatar img {
 				border-radius: 100%;
 				width: 200%;
+				text-align: center;
 			}
+
+/* Video */
+
+	.video {
+		border: 0;
+		width: 30%;
+		height: auto;
+		display: inline-block;
+		position: relative;
+		text-align: center;
+	}
+
+		.video.left {
+			float: left;
+			margin: 0 1.5em 0.75em 0;
+			top: 0.25em;
+		}
+
+		.video.right {
+			float: right;
+			margin: 0 0 1em 1.5em;
+			top: 0.25em;
+		}
+
+		.video.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+		}
 
 /* List */
 
@@ -2638,10 +2671,13 @@ input, select, textarea {
 			margin: 0;
 		}
 
+		/*
 		#header .image.avatar {
 			margin: 0 0 1em 0;
 			width: 8em;
 		}
+
+		 */
 
 /* Footer */
 
